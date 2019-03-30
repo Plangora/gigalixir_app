@@ -10,16 +10,17 @@ use Mix.Config
 # which you should run after static files are built and
 # before starting your production server.
 config :gigalixir_phoenix, GigalixirPhoenixWeb.Endpoint,
-  http: [:inet6, port: System.get_env("PORT") || 4000],
-  url: [host: System.get_env("APP_NAME") <> ".gigalixirapp.com", port: 80],
+  http: [:inet6, port: {:system, "PORT"}],
+  # url: [host: "${APP_NAME}.gigalixirapp.com", port: 80],
+  url: [host: "localhost", port: 4000], # for testing prod locally
   cache_static_manifest: "priv/static/cache_manifest.json",
-  secret_key_base: Map.fetch!(System.get_env(), "SECRET_KEY_BASE"),
+  secret_key_base: "${SECRET_KEY_BASE}",
   server: true
 
 # Do not print debug messages in production
 config :logger, level: :info
 
 config :gigalixir_phoenix, GigalixirPhoenix.Repo,
-  url: System.get_env("DATABASE_URL"),
+  url: "${DATABASE_URL}",
   ssl: true,
   pool_size: 2
