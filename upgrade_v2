@@ -1,0 +1,8 @@
+#!/bin/bash
+# make sure you checkout the v2-2 branch first
+# git checkout v2-2
+MIX_ENV=prod mix release --env=prod --upgrade --upfrom=0.1.0
+cd tmp
+mkdir -p releases/0.1.1
+cp ../_build/prod/rel/gigalixir_phoenix/releases/0.1.1/gigalixir_phoenix.tar.gz releases/0.1.1/
+bin/gigalixir_phoenix upgrade 0.1.1
