@@ -11,9 +11,8 @@ defmodule GigalixirPhoenix.Application do
       # Start the Ecto repository
       GigalixirPhoenix.Repo,
       # Start the endpoint when the application starts
-      GigalixirPhoenixWeb.Endpoint
-      # Starts a worker by calling: GigalixirPhoenix.Worker.start_link(arg)
-      # {GigalixirPhoenix.Worker, arg},
+      GigalixirPhoenixWeb.Endpoint,
+      {DynamicSupervisor, name: GigalixirPhoenix.TimerSupervisor, strategy: :one_for_one}
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html
