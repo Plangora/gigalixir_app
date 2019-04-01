@@ -1,7 +1,7 @@
 defmodule GigalixirPhoenix.Timer do
     use GenServer
     alias GigalixirPhoenixWeb.Endpoint
-    @greeting "Hello"
+    @greeting "Hey!"
 
     def start_link(room), do: GenServer.start_link(__MODULE__, {room, 0, @greeting})
 
