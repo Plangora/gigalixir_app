@@ -1,8 +1,0 @@
-#!/bin/bash
-rm -rf tmp
-MIX_ENV=prod mix release --env=prod
-mkdir tmp
-cd tmp
-cp ../_build/prod/rel/gigalixir_phoenix/releases/0.1.0/gigalixir_phoenix.tar.gz .
-tar zxf gigalixir_phoenix.tar.gz
-DATABASE_URL="postgresql://foo:secret@localhost:5432/foo" MY_HOSTNAME=example.com MY_COOKIE=secret REPLACE_OS_VARS=true MY_NODE_NAME=foo@127.0.0.1 PORT=4000 bin/gigalixir_phoenix foreground
