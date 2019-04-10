@@ -9,7 +9,7 @@ defmodule GigalixirPhoenix.Application do
     # List all child processes to be supervised
     children = [
       # Start the Ecto repository
-      GigalixirPhoenix.Repo,
+      # GigalixirPhoenix.Repo,
       # Start the endpoint when the application starts
       GigalixirPhoenixWeb.Endpoint,
       {DynamicSupervisor, name: GigalixirPhoenix.TimerSupervisor, strategy: :one_for_one},
