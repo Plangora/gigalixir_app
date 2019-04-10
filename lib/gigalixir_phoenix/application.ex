@@ -12,7 +12,8 @@ defmodule GigalixirPhoenix.Application do
       GigalixirPhoenix.Repo,
       # Start the endpoint when the application starts
       GigalixirPhoenixWeb.Endpoint,
-      {DynamicSupervisor, name: GigalixirPhoenix.TimerSupervisor, strategy: :one_for_one}
+      {DynamicSupervisor, name: GigalixirPhoenix.TimerSupervisor, strategy: :one_for_one},
+      {Cluster.Supervisor, [Application.get_env(:libcluster, :toplogies), [name: GigalixirPhoenix.ClusterSupervisor]]}
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html

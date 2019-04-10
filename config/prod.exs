@@ -24,3 +24,14 @@ config :gigalixir_phoenix, GigalixirPhoenix.Repo,
   url: "${DATABASE_URL}",
   ssl: true,
   pool_size: 2
+
+config :libcluster,
+  topologies: [
+    k8s: [
+      strategy: Cluster.Strategy.Kubernetes,
+      config: [
+        kubernetes_selector: "${LIBCLUSTER_KUBERNETES_SELECTOR}",
+        kubernetes_node_basename: "${LIBCLUSTER_KUBERNETES_NODE_BASENAME}"
+      ]
+    ]
+  ]
